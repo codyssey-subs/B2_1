@@ -3,6 +3,16 @@ import sys
 def main():
     parser = create_parser()
 
+    budget_repository = BudgetRepository()
+    category_repository = CategoryRepository()
+    transaction_repository = TransactionRepository()
+
+    service = BudgetService(
+        budget_repository,
+        category_repository,
+        transaction_repository
+    )
+    
     try:
         args = parser.parse_args()
     except SystemExit as e: #수정필요!!!!
